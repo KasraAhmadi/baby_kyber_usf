@@ -11,7 +11,9 @@ import math
 ######################################################
 #Key_Gen
 ######################################################
-err_msg = "Please change v accordingly to  equation\nv = t^T*r + e2 - m"
+err_msg = "Please change v accordingly to  equation v = Transpose(t)*r + e2 - m"
+err_msg_2 = "Please change m_n accordingly to  equation v - Transpose(s) * u"
+
 q = 17
 n = 4
 R = PolynomialRing(q,n)
@@ -58,14 +60,14 @@ def encryption(A00,A01,A10,A11,t0,t1):
     u0 = A00 * r0 + A10 * r1 + e10
     u1 = A01 * r0 + A11 * r1 + e11
     v = 0 # Modify it based on  v = Transpose(t)*r + e2 - m
+    v = (t0 * r0) + (t1 * r1) + e2 - m
 
     return u0,u1,v
 def decryption(u0,u1,v):
     try:
         assert v != 0, err_msg
-        #Calculate noisy message
-        #m_n = v - s^T * u
-        m_n =  v - (s0*u0 + s1*u1)
+        m_n = 0 # Modify it based on  m_n = v - Transpose(s) * u
+        assert m_n != 0, err_msg_2
         compress_mod = 2
         compress_float = compress_mod / q
         m_n.coeffs = [round_up(compress_float * c) % compress_mod for c in m_n.coeffs ]

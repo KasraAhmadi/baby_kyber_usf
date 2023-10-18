@@ -1,10 +1,10 @@
 ######################################################
 #Baby Kyber
+#Inspired by https://cryptopedia.dev/posts/kyber/
 #Coded by Kasra Ahmadi
 #Cryptographic Hardware Lab @USF_ENB323
 #Supervised by Pr. Mehran Mozaffari Kermani
 ######################################################
-
 from polynomials import *
 import math
 

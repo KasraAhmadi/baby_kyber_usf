@@ -60,7 +60,6 @@ def encryption(A00,A01,A10,A11,t0,t1):
     u0 = A00 * r0 + A10 * r1 + e10
     u1 = A01 * r0 + A11 * r1 + e11
     v = 0 # Modify it based on  v = Transpose(t)*r + e2 - m
-    v = (t0 * r0) + (t1 * r1) + e2 - m
 
     return u0,u1,v
 def decryption(u0,u1,v):
